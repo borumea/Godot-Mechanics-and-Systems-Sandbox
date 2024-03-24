@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://dacvdcjggi5cq"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ejxrj"]
+[ext_resource type="PackedScene" uid="uid://btickut57vg7v" path="res://scenes/world.tscn" id="1_f0jbg"]
+[ext_resource type="PackedScene" uid="uid://cq54e2pepbh0y" path="res://scenes/player.tscn" id="2_n0dj3"]
+[ext_resource type="PackedScene" uid="uid://dbv0hexcht3ve" path="res://scenes/enemy_spawner.tscn" id="3_2jowa"]
+[ext_resource type="Script" path="res://scenes/BulletManager.gd" id="4_lov2y"]
+[ext_resource type="PackedScene" uid="uid://p2cqcr3jq86o" path="res://scenes/bullet.tscn" id="5_ik745"]
+[ext_resource type="PackedScene" uid="uid://cqeqgyq8waj6h" path="res://scenes/hud.tscn" id="7_p2207"]
+[ext_resource type="PackedScene" uid="uid://diu8lcgma1x5g" path="res://scenes/game_over.tscn" id="8_kngst"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ejxrj")
+
+[node name="World" parent="." instance=ExtResource("1_f0jbg")]
+
+[node name="Player" parent="." instance=ExtResource("2_n0dj3")]
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("4_lov2y")
+bullet_scene = ExtResource("5_ik745")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_2jowa")]
+
+[node name="RestartTimer" type="Timer" parent="."]
+process_mode = 2
+one_shot = true
+
+[node name="WaveOverTimer" type="Timer" parent="."]
+process_mode = 2
+one_shot = true
+
+[node name="HUD" parent="." instance=ExtResource("7_p2207")]
+offset = Vector2(0, 768)
+transform = Transform2D(1, 0, 0, 1, 0, 768)
+
+[node name="GameOver" parent="." instance=ExtResource("8_kngst")]
+process_mode = 2
+
+[connection signal="shoot" from="Player" to="BulletManager" method="_on_player_shoot"]
+[connection signal="hit_p" from="EnemySpawner" to="." method="_on_enemy_spawner_hit_p"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_restart_timer_timeout"]
+[connection signal="timeout" from="WaveOverTimer" to="." method="_on_wave_over_timer_timeout"]
