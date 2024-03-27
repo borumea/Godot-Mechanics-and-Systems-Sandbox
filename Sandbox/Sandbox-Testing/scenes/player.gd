@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const BASE_SPEED : int = 200
+const BASE_SPEED : int = 300
 const BASE_ATK : int = 1
 const BASE_HEALTH : int = 3
 
@@ -17,7 +17,7 @@ func get_input():
 	
 	#Mouse input
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):# and can_shoot:
-		var dir = get_global_mouse_position() - position
+		#var dir = get_global_mouse_position() - position
 		#shoot.emit(position, dir)
 		#can_shoot = false
 		$Timer.start()
@@ -28,7 +28,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	#limit movement to window size
-	position = position.clamp(Vector2.ZERO, screen_size)
+	#position = position.clamp((, 0), screen_size)
 	
 	#player rotation
 	var mouse = get_local_mouse_position()

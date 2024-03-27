@@ -1,10 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy5eor6o4be7g"]
+[gd_scene load_steps=8 format=3 uid="uid://dy5eor6o4be7g"]
 
 [ext_resource type="PackedScene" uid="uid://cq7to6va3pvxn" path="res://scenes/overworld.tscn" id="1_2cgi3"]
+[ext_resource type="Script" path="res://scenes/node.gd" id="1_n6xr2"]
 [ext_resource type="PackedScene" uid="uid://kpukrysj8f72" path="res://scenes/player.tscn" id="2_x1ibm"]
+[ext_resource type="Script" path="res://scenes/overworld.gd" id="3_sqvnb"]
+[ext_resource type="PackedScene" uid="uid://c0w81fg4kc818" path="res://scenes/dungeon_1.tscn" id="3_t5jx4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi8d6"]
+size = Vector2(63, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bylmd"]
+size = Vector2(21.6666, 11.25)
 
 [node name="Node" type="Node"]
+script = ExtResource("1_n6xr2")
 
 [node name="Overworld" parent="." instance=ExtResource("1_2cgi3")]
+script = ExtResource("3_sqvnb")
+
+[node name="Dungeon_1" parent="." instance=ExtResource("3_t5jx4")]
+position = Vector2(3571, 127)
 
 [node name="Player" parent="." instance=ExtResource("2_x1ibm")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Dungeon1_Entrance" type="Area2D" parent="."]
+
+[node name="Dungeon1_Entrance" type="CollisionShape2D" parent="Dungeon1_Entrance"]
+position = Vector2(-1487, -679)
+shape = SubResource("RectangleShape2D_qi8d6")
+
+[node name="Dungeon1_Exit" type="Area2D" parent="."]
+
+[node name="Dungeon1_Exit" type="CollisionShape2D" parent="Dungeon1_Exit"]
+position = Vector2(4099, 52)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_bylmd")
+
+[connection signal="body_entered" from="Dungeon1_Entrance" to="." method="_on_dungeon_1_entrance_body_entered"]
+[connection signal="body_exited" from="Dungeon1_Entrance" to="." method="_on_dungeon_1_entrance_body_exited"]
+[connection signal="body_entered" from="Dungeon1_Exit" to="." method="_on_dungeon_1_exit_body_entered"]
+[connection signal="body_exited" from="Dungeon1_Exit" to="." method="_on_dungeon_1_exit_body_exited"]

@@ -5,3 +5,4 @@ This repository will be used for sandbox testing of new ideas for systems, mecha
 ## Credits
 
 Reference game credits to <https://github.com/russs123/Prairie_King_Tut>
+Dungeon art and enemy animations <https://anokolisa.itch.io/dungeon-crawler-pixel-art-asset-pack>
