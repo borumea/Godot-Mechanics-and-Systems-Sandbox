@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw8pj5diyra3v"]
+
+[ext_resource type="Script" path="res://scenes/start_menu.gd" id="1_m2j8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_er1av"]
+bg_color = Color(0.4864, 0.64, 0.55296, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="InputEventKey" id="InputEventKey_b327p"]
+
+[sub_resource type="Shortcut" id="Shortcut_p5nx7"]
+events = [SubResource("InputEventKey_b327p")]
+
+[node name="StartMenu" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_m2j8k")
+
+[node name="Menu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -336.0
+offset_right = 336.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_er1av")
+
+[node name="Start" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 168.0
+offset_right = 436.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 30
+button_mask = 7
+shortcut = SubResource("Shortcut_p5nx7")
+text = "Start"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Exit" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 336.0
+offset_right = 436.0
+offset_bottom = 386.0
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="Options" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 252.0
+offset_right = 436.0
+offset_bottom = 302.0
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[connection signal="button_up" from="Menu/Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Menu/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="Menu/Options" to="." method="_on_options_button_up"]

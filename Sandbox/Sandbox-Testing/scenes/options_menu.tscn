@@ -1,0 +1,96 @@
+[gd_scene load_steps=4 format=3 uid="uid://brwyejxpln2v0"]
+
+[ext_resource type="Script" path="res://scenes/options_menu.gd" id="1_criet"]
+[ext_resource type="Texture2D" uid="uid://wvhnwnpff5tk" path="res://icon.svg" id="2_sa52t"]
+
+[sub_resource type="Theme" id="Theme_stwuo"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_criet")
+
+[node name="Menu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_stwuo")
+
+[node name="MasterVolume" type="HSlider" parent="Menu"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 100.0
+offset_right = 580.0
+offset_bottom = 150.0
+value = 50.0
+rounded = true
+
+[node name="MusicVolume" type="HSlider" parent="Menu"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 175.0
+offset_right = 580.0
+offset_bottom = 225.0
+value = 50.0
+rounded = true
+
+[node name="SFXVolume" type="HSlider" parent="Menu"]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 250.0
+offset_right = 580.0
+offset_bottom = 300.0
+value = 50.0
+rounded = true
+
+[node name="MasterVolumeLabel" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 230.0
+offset_bottom = 150.0
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeLabel" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 175.0
+offset_right = 230.0
+offset_bottom = 225.0
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolumeLabel" type="Label" parent="Menu"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 250.0
+offset_right = 230.0
+offset_bottom = 300.0
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 20.0
+offset_right = 580.0
+offset_bottom = 90.0
+icon = ExtResource("2_sa52t")
+icon_alignment = 1
+expand_icon = true
+
+[node name="OpenTimer" type="Timer" parent="."]
+
+[connection signal="button_up" from="Menu/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="timeout" from="OpenTimer" to="." method="_on_open_timer_timeout"]

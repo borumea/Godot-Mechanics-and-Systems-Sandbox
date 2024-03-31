@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://pkgqmt3kcf03"]
+
+[ext_resource type="Script" path="res://scenes/pause_menu.gd" id="1_dy6wm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jud8h"]
+
+[node name="Pause_Menu" type="CanvasLayer"]
+script = ExtResource("1_dy6wm")
+
+[node name="Menu" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 300.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jud8h")
+
+[node name="QuitToMainMenu" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 200.0
+offset_right = 378.0
+offset_bottom = 232.0
+text = "Quit to Main Menu"
+
+[node name="SaveAndQuit" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 250.0
+offset_right = 358.0
+offset_bottom = 282.0
+text = "Save and Quit"
+
+[node name="Options" type="Button" parent="Menu"]
+layout_mode = 0
+offset_left = 265.0
+offset_top = 300.0
+offset_right = 335.0
+offset_bottom = 331.0
+text = "Settings"
+
+[node name="OpenTimer" type="Timer" parent="."]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="button_up" from="Menu/QuitToMainMenu" to="." method="_on_quit_to_main_menu_button_up"]
+[connection signal="button_up" from="Menu/SaveAndQuit" to="." method="_on_save_and_quit_button_up"]
+[connection signal="button_up" from="Menu/Options" to="." method="_on_options_button_up"]
+[connection signal="timeout" from="OpenTimer" to="." method="_on_open_timer_timeout"]

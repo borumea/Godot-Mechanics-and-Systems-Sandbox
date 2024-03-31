@@ -20,7 +20,8 @@ func get_input():
 		#var dir = get_global_mouse_position() - position
 		#shoot.emit(position, dir)
 		#can_shoot = false
-		$Timer.start()
+		#$Timer.start()
+		pass
 
 func _physics_process(_delta):
 	#player movement
