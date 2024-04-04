@@ -1,8 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://be5jf5p8q1kh8"]
+[gd_scene load_steps=4 format=3 uid="uid://be5jf5p8q1kh8"]
 
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="1_3bcwt"]
-[ext_resource type="Texture2D" uid="uid://bxe0pukpm52dh" path="res://assets/bullet.png" id="1_j47do"]
-[ext_resource type="Texture2D" uid="uid://wvhnwnpff5tk" path="res://icon.svg" id="2_ry0qp"]
 
 [sub_resource type="Theme" id="Theme_5pnuy"]
 
@@ -38,6 +36,7 @@ theme = SubResource("Theme_5pnuy")
 theme_override_styles/panel = SubResource("StyleBoxFlat_mrtn8")
 
 [node name="ItemList" type="ItemList" parent="Menu"]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -46,15 +45,8 @@ offset_right = 600.0
 offset_bottom = -72.0
 grow_vertical = 2
 allow_rmb_select = true
-item_count = 2
-max_columns = 6
-same_column_width = true
-fixed_column_width = 100
+max_columns = 5
 fixed_icon_size = Vector2i(32, 32)
-item_0/text = "Grass"
-item_0/icon = ExtResource("1_j47do")
-item_1/text = "Wood"
-item_1/icon = ExtResource("2_ry0qp")
 
 [node name="OpenTimer" type="Timer" parent="."]
 wait_time = 0.05

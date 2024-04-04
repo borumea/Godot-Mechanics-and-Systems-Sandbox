@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dy5eor6o4be7g"]
+[gd_scene load_steps=13 format=3 uid="uid://dy5eor6o4be7g"]
 
 [ext_resource type="PackedScene" uid="uid://cq7to6va3pvxn" path="res://scenes/overworld.tscn" id="1_2cgi3"]
 [ext_resource type="Script" path="res://scenes/node.gd" id="1_n6xr2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be5jf5p8q1kh8" path="res://scenes/inventory.tscn" id="6_k460d"]
 [ext_resource type="PackedScene" uid="uid://cw8pj5diyra3v" path="res://scenes/start_menu.tscn" id="7_ajqpc"]
 [ext_resource type="PackedScene" uid="uid://brwyejxpln2v0" path="res://scenes/options_menu.tscn" id="8_r85er"]
+[ext_resource type="PackedScene" uid="uid://pvtnv3ymh5j3" path="res://scenes/hotbar.tscn" id="9_g4bct"]
 [ext_resource type="PackedScene" uid="uid://pkgqmt3kcf03" path="res://scenes/pause_menu.tscn" id="9_mtn34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi8d6"]
@@ -52,11 +53,18 @@ shape = SubResource("RectangleShape2D_bylmd")
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("9_mtn34")]
 
+[node name="Hotbar" parent="Menus" instance=ExtResource("9_g4bct")]
+
 [node name="Player" parent="." instance=ExtResource("2_x1ibm")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TestTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="body_entered" from="LoadingZones/Dungeon1_Entrance" to="." method="_on_dungeon_1_entrance_body_entered"]
 [connection signal="body_exited" from="LoadingZones/Dungeon1_Entrance" to="." method="_on_dungeon_1_entrance_body_exited"]
 [connection signal="body_entered" from="LoadingZones/Dungeon1_Exit" to="." method="_on_dungeon_1_exit_body_entered"]
 [connection signal="body_exited" from="LoadingZones/Dungeon1_Exit" to="." method="_on_dungeon_1_exit_body_exited"]
+[connection signal="timeout" from="TestTimer" to="." method="_on_test_timer_timeout"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://pvtnv3ymh5j3"]
+
+[ext_resource type="Script" path="res://scenes/hotbar.gd" id="1_sci2j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqtij"]
+draw_center = false
+
+[node name="Hotbar" type="CanvasLayer"]
+script = ExtResource("1_sci2j")
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 208.0
+offset_top = 640.0
+offset_right = 464.0
+offset_bottom = 672.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_eqtij")
+max_columns = 8
+fixed_column_width = 32
+fixed_icon_size = Vector2i(32, 32)

@@ -2,6 +2,7 @@ extends Node
 
 var in_loading_zone : bool
 var in_pause_menu : bool
+var item_scene := preload("res://scenes/item.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,3 +66,8 @@ func _on_dungeon_1_exit_body_entered(body):
 
 func _on_dungeon_1_exit_body_exited(_body):
 	in_loading_zone = false
+
+func _on_test_timer_timeout():
+	var item = item_scene.instantiate()
+	item.type = randi_range(0, 2)
+	call_deferred("add_child", item)
